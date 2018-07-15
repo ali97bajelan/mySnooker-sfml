@@ -13,17 +13,24 @@ void renderer(RenderWindow *window, Game *game) {
 }
  */
 void renderer(RenderWindow *window,Ball **balls){
-    CircleShape shape[10];
-    CircleShape cir;
-    for (int i = 0; i <10 ; i++) {
+    CircleShape shape[17];
+    Texture pic[17];
+
+    for (int i = 0; i <17 ; i++) {
         float x=balls[i]->get_x();
         float y=balls[i]->get_y();
-        //std::cout<<x<<" "<<y<<std::endl;
-        shape[i].setRadius(10);
+        std::string color=balls[i]->get_color();
+        if(color=="white" or color=="orange")
+            pic[i].loadFromFile("Picture/"+color+".jpg");
+        else
+            pic[i].loadFromFile("Picture/"+color+".png");
+        //pic[i].setSmooth(true);
+        shape[i].setTexture(&pic[i]);
+
+        shape[i].setRadius(12);
         shape[i].setPosition(x,y);
-        shape[i].setOrigin(5,5);
-        Color color=balls[i]->get_color();
-        shape[i].setFillColor(color);
+        //shape[i].setOrigin(5,5);
+
     }
 
 
@@ -31,18 +38,17 @@ void renderer(RenderWindow *window,Ball **balls){
 
     Texture image;
     image.loadFromFile("Picture/Table.jpg");
-
+    image.setSmooth(true);
     Sprite background(image);
 
     window->clear();
     window->draw(background);
-    window->draw(cir);
-    //window->draw(shape[0]);
 
-    for (int j = 0; j <10 ; j++) {
+    for (int j = 0; j <17 ; j++) {
         window->draw(shape[j]);
         //std::cout<<"f";
     }
+
 
     window->display();
 }

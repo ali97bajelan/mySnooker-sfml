@@ -12,14 +12,14 @@
 using namespace sf;
 class Ball {
 public:
-    Ball(float x, float y, float Vx, float Vy, float speed,Color color);
+    Ball(float x, float y, float Vx, float Vy, float speed,std::string color);
     float get_x();
     float get_y();
     float get_Ax();
     float get_Ay();
     float get_Vx();
     float get_Vy();
-    Color get_color();
+    std::string get_color();
     void set_x(float x);
     void set_y(float y);
     void set_Vx(float Vx);
@@ -31,7 +31,7 @@ public:
     Ball * get_ball();
 private:
     float x,y,Vx,Vy,Ax,Ay,speed;
-    sf::Color color;
+    std::string color;
 };
 
 #endif //MYSNOOKER_BALL_H

@@ -12,19 +12,29 @@ Game::Game(int width, int height) {
     this->width = width;
     this->height = height;
     //ball = new Ball(width / 20, height / 20, 1, 1, 0,Color::White);
-    this->balls = new Ball*[10];
-    balls[0] = new Ball(900,340,0,0,0,Color::White);
-    balls[1] = new Ball(150,300,0,0,0,Color::Red);
-    balls[2] = new Ball(150,325,0,0,0,Color::Red);
-    balls[3] = new Ball(150,350,0,0,0,Color::Red);
-    balls[4] = new Ball(150,360,0,0,0,Color::Red);
-    balls[5] = new Ball(150,380,0,0,0,Color::Red);
-    balls[6] = new Ball(150,400,0,0,0,Color::Red);
-    balls[7] = new Ball(150,420,0,0,0,Color::Red);
-    balls[8] = new Ball(150,440,0,0,0,Color::Red);
-    balls[9] = new Ball(150,460,0,0,0,Color::Red);
+    this->balls = new Ball *[17];
+    balls[0] = new Ball(1100, 335, 0, 0, 0,"white");
+
+    balls[1] = new Ball(150, 290, 0, 0, 0, "red");
+    balls[2] = new Ball(150, 315, 0, 0, 0, "red");
+    balls[3] = new Ball(150, 340, 0, 0, 0, "red");
+    balls[4] = new Ball(150, 365, 0, 0, 0, "red");
+    balls[5] = new Ball(170, 305, 0, 0, 0, "red");
+    balls[6] = new Ball(170, 330, 0, 0, 0, "red");
+    balls[7] = new Ball(170, 355, 0, 0, 0, "red");
+    balls[8] = new Ball(190, 320, 0, 0, 0, "red");
+    balls[9] = new Ball(190, 345, 0, 0, 0, "red");
+    balls[10] = new Ball(210, 335, 0, 0, 0, "red");
+
+    balls[11] = new Ball(630, 335, 0, 0, 0, "blue");
+    balls[12] = new Ball(100, 335, 0, 0, 0, "black");
+    balls[13] = new Ball(990, 220, 0, 0, 0, "yellow");
+    balls[14] = new Ball(990, 420, 0, 0, 0, "green");
+    balls[15] = new Ball(230, 335, 0, 0, 0, "purple");
+    balls[16] = new Ball(990, 335, 0, 0, 0, "orange");
 
 }
+
 /*
 void Game::shoot(int power, float Vx, float Vy, float Ax, float Ay) {
     ball->set_speed(power);

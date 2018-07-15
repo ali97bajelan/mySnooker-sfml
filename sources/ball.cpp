@@ -12,7 +12,7 @@
 //#include "../main.cpp"
 //#include "../headers/renderer.h"
 
-Ball::Ball(float x, float y, float Vx, float Vy, float speed,Color color) {
+Ball::Ball(float x, float y, float Vx, float Vy, float speed,std::string color) {
     this->x = x;
     this->y = y;
     this->Vx = Vx;
@@ -75,7 +75,7 @@ float Ball::get_Vy() {
 Ball* Ball::get_ball() {
     return this;
 }
-Color Ball::get_color() {
+std::string Ball::get_color() {
     return this->color;
 }
 void Ball::move(RenderWindow *window) {
