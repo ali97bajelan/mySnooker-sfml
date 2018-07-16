@@ -26,7 +26,7 @@ public:
     void set_Vy(float Vy);
     void set_Ax(float Ax);
     void set_Ay(float Ay);
-    void move(RenderWindow*);
+    void move();
     void set_speed(float speed);
     Ball * get_ball();
 private:

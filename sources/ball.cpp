@@ -78,7 +78,7 @@ Ball* Ball::get_ball() {
 std::string Ball::get_color() {
     return this->color;
 }
-void Ball::move(RenderWindow *window) {
+void Ball::move() {
     float delta_x = pow((this->Vx), 2) / this->Ax;
     float delta_y = pow((this->Vy), 2) / this->Ay;
     while (delta_x>0 || delta_y>0){
@@ -89,7 +89,7 @@ void Ball::move(RenderWindow *window) {
         delta_x-=0.5;
         delta_y-=0.5;
 //        renderer(window,this);
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        //std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
     }
     //if (this->x > 600 || this->x < 0)

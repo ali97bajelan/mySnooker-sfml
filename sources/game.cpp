@@ -13,7 +13,7 @@ Game::Game(int width, int height) {
     this->height = height;
     //ball = new Ball(width / 20, height / 20, 1, 1, 0,Color::White);
     this->balls = new Ball *[17];
-    balls[0] = new Ball(1100, 335, 0, 0, 0,"white");
+    balls[0] = new Ball(1100, 335, 0, 0, 0, "white");
 
     balls[1] = new Ball(150, 290, 0, 0, 0, "red");
     balls[2] = new Ball(150, 315, 0, 0, 0, "red");
@@ -35,6 +35,25 @@ Game::Game(int width, int height) {
 
 }
 
+Ball **Game::get_balls() {
+    return this->balls;
+}
+
+void Game::shoot(float speed, float degree, int index) {
+    float Vx = speed * cos(degree*3.14*2/360);
+    float Vy = speed * sin(degree*3.14*2/360);
+    std::cout<<Vx<<" "<<Vy<<std::endl;
+
+    Ball *top =get_balls()[index];
+    top->set_Ax(3);
+    top->set_Ay(3);
+    top->set_Vx(Vx);
+    top->set_Vy(Vy);
+    std::cout<<top->get_x()<<" "<<top->get_y()<<std::endl;
+    top->move();
+    std::cout<<top->get_x()<<" "<<top->get_y()<<std::endl;
+
+}
 /*
 void Game::shoot(int power, float Vx, float Vy, float Ax, float Ay) {
     ball->set_speed(power);
@@ -48,6 +67,3 @@ void Game::shoot(int power, float Vx, float Vy, float Ax, float Ay) {
 
 }
 */
-Ball **Game::get_balls() {
-    return this->balls;
-}

@@ -11,6 +11,7 @@ class Game {
 public:
     Game(int width,int height);
     //void shoot(int power, float Vx, float Vy, float Ax, float Ay);
+    void shoot(float speed,float degree,int index);
     Ball **get_balls();
 private:
     int width,height;

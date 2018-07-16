@@ -9,27 +9,30 @@
 #include <chrono>
 
 using namespace std;
-//Game *game = new Game(600, 400);
-//sf::RenderWindow window(sf::VideoMode(600, 400), "My Snooker");
 
 
 int main() {
     RenderWindow window;
     Game *game;
+    Rendering render;
     //Game *game = new Game(600, 400);
     game = new Game(1280, 680);
     //Resource *resource = new Resource(game);
     //sf::RenderWindow window(sf::VideoMode(600, 400), "My Snooker");
     window.create(VideoMode(1280, 680), "My Snooker");
 
+    cout<<"f";
     Event event;
 
     while (window.isOpen()) {
         while (window.pollEvent(event)) {
             if (event.type == Event::Closed)
                 window.close();
-            //if (event.type == sf::Event::KeyPressed) {
-            //if (event.key.code == Keyboard::D)
+            if (event.type == sf::Event::KeyPressed) {
+                if (event.key.code == Keyboard::D){
+                    game->shoot(10,45,0);
+                    //game->get_balls()[0]->
+                }
             //game->shoot(1, 4, 12, 0, 0);
             //cout<<game->get_ball()->get_y()<<" "<<game->get_ball()->get_x()<<endl;
             //}
@@ -37,7 +40,7 @@ int main() {
             //std::cout<<sf::Mouse::getPosition(window).x<<" "<<sf::Mouse::getPosition(window).y<<std::endl;
 
             //}
-            //}
+            }
 
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 //game->shoot(1, 2, 3, 1, 1);
@@ -53,9 +56,9 @@ int main() {
             }
         }
         //cout<<"a"<<endl;
-        this_thread::sleep_for(chrono::milliseconds(40));
+        //this_thread::sleep_for(chrono::milliseconds(40));
         window.clear();
-        renderer(&window, game->get_balls());
+        render.renderer(&window, game->get_balls());
         //window.draw(image);
         window.display();
     }
