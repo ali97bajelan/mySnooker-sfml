@@ -49,9 +49,9 @@ void Game::shoot(float speed, float degree, int index) {
     top->set_Ay(3);
     top->set_Vx(Vx);
     top->set_Vy(Vy);
-    std::cout<<top->get_x()<<" "<<top->get_y()<<std::endl;
+    std::cout<<top->get_x()<<" "<<top->get_y()<<" before shoot"<<std::endl;
     top->move();
-    std::cout<<top->get_x()<<" "<<top->get_y()<<std::endl;
+    std::cout<<top->get_x()<<" "<<top->get_y()<<" after shoot"<<std::endl;
 
 }
 /*

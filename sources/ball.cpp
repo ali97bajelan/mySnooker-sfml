@@ -3,7 +3,7 @@
 //
 
 #include "../headers/ball.h"
-#include "../headers/renderer.h"
+//#include "../headers/renderer.h"
 #include <thread>
 #include <iostream>
 #include <chrono>

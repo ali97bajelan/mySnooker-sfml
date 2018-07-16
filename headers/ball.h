@@ -7,6 +7,7 @@
 
 #include <math.h>
 #include <SFML/Graphics.hpp>
+//#include "renderer.h"
 //#include "game.h"
 
 using namespace sf;

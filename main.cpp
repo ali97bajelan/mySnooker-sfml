@@ -2,7 +2,7 @@
 #include "headers/ball.h"
 #include "headers/renderer.h"
 #include "headers/network.h"
-
+#define pi 3.14159265
 #include <SFML/Graphics.hpp>
 #include <math.h>
 #include <iostream>
@@ -38,6 +38,8 @@ int main() {
             if (event.type == sf::Event::MouseButtonPressed) {
                 if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                     count++;
+                    cout << "zad " << count << endl;
+
                     if (count % 2 == 1) {
                         first_x = Mouse::getPosition().x;
                         first_y = Mouse::getPosition().y;
@@ -51,12 +53,8 @@ int main() {
                         cout << delta_x << " " << delta_y << endl;
                         double t = delta_y / delta_x;
                         teta = atan(t);
-                        cout << "degree" << teta << " " << t << endl;
+                        cout << "degree= " << 180*teta/pi << " " << t << endl;
                     }
-
-
-                    cout << "zad " << count << endl;
-
                 }
             }
 

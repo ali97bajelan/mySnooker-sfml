@@ -6,6 +6,7 @@
 #define MYSNOOKER_GAME_H
 
 #include "ball.h"
+#include "renderer.h"
 
 class Game {
 public:
