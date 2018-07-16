@@ -11,7 +11,7 @@ class Rendering{
 public:
   Rendering();
   void renderer(RenderWindow *window,Ball **balls);
-
+  int get();
 private:
     CircleShape shape[17];
     Texture pic[18];

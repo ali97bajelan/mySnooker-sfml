@@ -36,7 +36,6 @@ void Rendering::renderer(RenderWindow *window, Ball **balls) {
         float y = balls[i]->get_y();
         this->shape[i].setPosition(x, y);
     }
-
     window->clear();
     window->draw(this->background);
 
@@ -45,4 +44,7 @@ void Rendering::renderer(RenderWindow *window, Ball **balls) {
     }
 
     window->display();
+}
+int Rendering::get() {
+    return this->shape[0].getPosition().x;
 }

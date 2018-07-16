@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <thread>
 #include <iostream>
-
+#define pi 3.14159265
 
 Game::Game(int width, int height) {
     this->width = width;
@@ -40,8 +40,8 @@ Ball **Game::get_balls() {
 }
 
 void Game::shoot(float speed, float degree, int index) {
-    float Vx = speed * cos(degree*3.14*2/360);
-    float Vy = speed * sin(degree*3.14*2/360);
+    float Vx = speed * cos(degree);
+    float Vy = speed * sin(degree);
     std::cout<<Vx<<" "<<Vy<<std::endl;
 
     Ball *top =get_balls()[index];
