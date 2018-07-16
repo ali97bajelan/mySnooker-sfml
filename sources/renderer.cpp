@@ -2,7 +2,7 @@
 #include "../headers/renderer.h"
 #include <iostream>
 
-Rendering::Rendering() {
+Rendering::Rendering(RenderWindow *window) {
     for (int i = 0; i < 17; i++) {
         if (i == 0)
             this->pic[i].loadFromFile("Picture/white.jpg");
@@ -26,24 +26,24 @@ Rendering::Rendering() {
     this->pic[17].loadFromFile("Picture/Table.jpg");
     this->pic[17].setSmooth(true);
     this->background.setTexture(this->pic[17]);
-
+    this->window=window;
 }
 
-void Rendering::renderer(RenderWindow *window, Ball **balls) {
+void Rendering::renderer(Ball **balls) {
 
     for (int i = 0; i < 17; i++) {
         float x = balls[i]->get_x();
         float y = balls[i]->get_y();
         this->shape[i].setPosition(x, y);
     }
-    window->clear();
-    window->draw(this->background);
+    this->window->clear();
+    this->window->draw(this->background);
 
     for (int j = 0; j < 17; j++) {
-        window->draw(this->shape[j]);
+        this->window->draw(this->shape[j]);
     }
 
-    window->display();
+    this->window->display();
 }
 int Rendering::get() {
     return this->shape[0].getPosition().x;

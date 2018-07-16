@@ -9,10 +9,11 @@
 #include "ball.h"
 class Rendering{
 public:
-  Rendering();
-  void renderer(RenderWindow *window,Ball **balls);
+  Rendering(RenderWindow *window);
+  void renderer(Ball **balls);
   int get();
 private:
+    RenderWindow *window;
     CircleShape shape[17];
     Texture pic[18];
     Sprite background;
