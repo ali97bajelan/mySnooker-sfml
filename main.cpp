@@ -22,13 +22,6 @@ int main() {
     //sf::RenderWindow window(sf::VideoMode(600, 400), "My Snooker");
     window.create(VideoMode(1280, 680), "My Snooker");
 
-    //sf::CircleShape shape;
-    //shape.setRadius(40.f);
-    //shape.setPosition(100.f, 100.f);
-    //shape.setFillColor(sf::Color::Black);
-
-
-
     Event event;
 
     while (window.isOpen()) {
