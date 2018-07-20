@@ -2,7 +2,9 @@
 #include "headers/ball.h"
 #include "headers/renderer.h"
 #include "headers/network.h"
+
 #define pi 3.14159265
+
 #include <SFML/Graphics.hpp>
 #include <math.h>
 #include <iostream>
@@ -18,12 +20,12 @@ int main() {
     window.create(VideoMode(1280, 680), "My Snooker");
 
     Rendering *render = new Rendering(&window);
-    game = new Game(1280, 680);
+    game = new Game(1280, 680, render);
     //Resource *resource = new Resource(game);
     //window.setFramerateLimit(100);
     Event event;
-
-    float teta, first_x, first_y, end_x, end_y, delta_x, delta_y = 0;
+    float teta = 0;
+    float first_x, first_y, end_x, end_y, delta_x, delta_y = 0;
     int count = 0;
 
     while (window.isOpen()) {
@@ -32,7 +34,19 @@ int main() {
                 window.close();
             if (event.type == sf::Event::KeyPressed) {
                 if (event.key.code == Keyboard::D) {
-                    game->shoot(20, teta, 0);
+                    game->shoot(30, 0, 0);
+                }
+                if (event.key.code == Keyboard::W) {
+                    game->shoot(30, pi / 2, 0);
+                }
+                if (event.key.code == Keyboard::A) {
+                    game->shoot(30, pi, 0);
+                }
+                if (event.key.code == Keyboard::S) {
+                    game->shoot(30, 3 * pi / 2, 0);
+                }
+                if (event.key.code == Keyboard::M) {
+                    game->shoot(60, pi / 6, 0);
                 }
             }
             if (event.type == sf::Event::MouseButtonPressed) {
@@ -53,7 +67,7 @@ int main() {
                         cout << delta_x << " " << delta_y << endl;
                         double t = delta_y / delta_x;
                         teta = atan(t);
-                        cout << "degree= " << 180*teta/pi << " " << t << endl;
+                        cout << "degree= " << 180 * teta / pi << " " << t << endl;
                     }
                 }
             }

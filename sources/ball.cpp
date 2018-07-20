@@ -17,6 +17,8 @@ Ball::Ball(float x, float y, float Vx, float Vy, float speed,std::string color) 
     this->y = y;
     this->Vx = Vx;
     this->Vy = Vy;
+    this->Ax=-3;
+    this->Ay=-3;
     this->color=color;
     this->speed = speed;
 }

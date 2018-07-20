@@ -10,13 +10,15 @@
 
 class Game {
 public:
-    Game(int width,int height);
-    //void shoot(int power, float Vx, float Vy, float Ax, float Ay);
+    Game(int width,int height,Rendering *render);
     void shoot(float speed,float degree,int index);
+    void move(Ball *ball);
+    void check();
     Ball **get_balls();
 private:
     int width,height;
     Ball **balls;
+    Rendering *render;
 };
 
 #endif //MYSNOOKER_GAME_H

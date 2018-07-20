@@ -11,7 +11,7 @@ Rendering::Rendering(RenderWindow *window) {
         if (i == 11)
             this->pic[i].loadFromFile("Picture/blue.png");
         if (i == 12)
-            this->pic[i].loadFromFile("Picture/black.png");
+            this->pic[i].loadFromFile("Picture/newblack.png");
         if (i == 13)
             this->pic[i].loadFromFile("Picture/yellow.png");
         if (i == 14)
