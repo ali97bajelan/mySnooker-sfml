@@ -5,22 +5,22 @@
 Rendering::Rendering(RenderWindow *window) {
     for (int i = 0; i < 17; i++) {
         if (i == 0)
-            this->pic[i].loadFromFile("Picture/white.jpg");
+            this->pic[i].loadFromFile("Picture/900/white.png");
         if (i > 0 and i < 11)
-            this->pic[i].loadFromFile("Picture/red.png");
+            this->pic[i].loadFromFile("Picture/900/red.png");
         if (i == 11)
-            this->pic[i].loadFromFile("Picture/blue.png");
+            this->pic[i].loadFromFile("Picture/900/blue.png");
         if (i == 12)
-            this->pic[i].loadFromFile("Picture/newblack.png");
+            this->pic[i].loadFromFile("Picture/900/black(croped).png");
         if (i == 13)
-            this->pic[i].loadFromFile("Picture/yellow.png");
+            this->pic[i].loadFromFile("Picture/900/yellow2.png");
         if (i == 14)
-            this->pic[i].loadFromFile("Picture/green.png");
+            this->pic[i].loadFromFile("Picture/900/green.png");
         if (i == 15)
-            this->pic[i].loadFromFile("Picture/purple.png");
+            this->pic[i].loadFromFile("Picture/900/purple.png");
         if (i == 16)
-            this->pic[i].loadFromFile("Picture/orange.jpg");
-        this->shape[i].setRadius(12);
+            this->pic[i].loadFromFile("Picture/900/orange.png");
+        this->shape[i].setRadius(11);
         this->shape[i].setTexture(&this->pic[i]);
     }
     this->pic[17].loadFromFile("Picture/Table.jpg");

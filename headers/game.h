@@ -12,10 +12,11 @@ class Game {
 public:
     Game(int width,int height,Rendering *render);
     void shoot(float speed,float degree,int index);
-    void move(Ball *ball);
+    void move();
     void check();
     Ball **get_balls();
-private:
+    bool is_moving();
+    private:
     int width,height;
     Ball **balls;
     Rendering *render;

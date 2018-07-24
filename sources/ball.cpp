@@ -12,14 +12,14 @@
 //#include "../main.cpp"
 //#include "../headers/renderer.h"
 
-Ball::Ball(float x, float y, float Vx, float Vy, float speed,std::string color) {
+Ball::Ball(float x, float y, float Vx, float Vy, float speed, std::string color) {
     this->x = x;
     this->y = y;
     this->Vx = Vx;
     this->Vy = Vy;
-    this->Ax=-3;
-    this->Ay=-3;
-    this->color=color;
+    this->Ax = -3;
+    this->Ay = -3;
+    this->color = color;
     this->speed = speed;
 }
 
@@ -37,10 +37,22 @@ void Ball::set_y(float y) {
 
 void Ball::set_Vy(float Vy) {
     this->Vy = Vy;
+    if (Vy > 0)
+        this->Ay = -3;
+    if (Vy < 0)
+        this->Ay = 3;
+    if (Vy == 0)
+        this->Ay = 0;
 }
 
 void Ball::set_Vx(float Vx) {
     this->Vx = Vx;
+    if (Vx > 0)
+        this->Ax = -3;
+    if (Vx < 0)
+        this->Ax = 3;
+    if (Vx == 0)
+        this->Ax = 0;
 }
 
 void Ball::set_Ax(float Ax) {
@@ -74,33 +86,44 @@ float Ball::get_Vx() {
 float Ball::get_Vy() {
     return this->Vy;
 }
-Ball* Ball::get_ball() {
+
+Ball *Ball::get_ball() {
     return this;
 }
+
 std::string Ball::get_color() {
     return this->color;
 }
+
 void Ball::move() {
     float delta_x = pow((this->Vx), 2) / this->Ax;
     float delta_y = pow((this->Vy), 2) / this->Ay;
-    while (delta_x>0 || delta_y>0){
-        if (delta_x>0)
-            this->x+=0.5;
-        if (delta_y>0)
-            this->y+=0.5;
-        delta_x-=0.5;
-        delta_y-=0.5;
+    while (delta_x > 0 || delta_y > 0) {
+        if (delta_x > 0)
+            this->x += 0.5;
+        if (delta_y > 0)
+            this->y += 0.5;
+        delta_x -= 0.5;
+        delta_y -= 0.5;
 //        renderer(window,this);
         //std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
     }
     //if (this->x > 600 || this->x < 0)
-      //  this->set_Ax(-this->get_Ax());
+    //  this->set_Ax(-this->get_Ax());
     //if (this->y > 400 || this->y < 0)
-      //  this->set_Ay(-this->get_Ay());
+    //  this->set_Ay(-this->get_Ay());
     //this->x += pow((this->Vx), 2) / this->Ax;
     //this->y += pow((this->Vy), 2) / this->Ay;
 
 
 }
 
+void Ball::goal() {
+    this->x = -100;
+    this->y = -100;
+    this->Vx = 0;
+    this->Vy = 0;
+    this->Ax = 0;
+    this->Ay = 0;
+}

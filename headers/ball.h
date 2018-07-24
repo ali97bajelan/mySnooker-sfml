@@ -30,6 +30,7 @@ public:
     void move();
     void set_speed(float speed);
     Ball * get_ball();
+    void goal();
 private:
     float x,y,Vx,Vy,Ax,Ay,speed;
     std::string color;

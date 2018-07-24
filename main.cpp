@@ -33,20 +33,20 @@ int main() {
             if (event.type == Event::Closed)
                 window.close();
             if (event.type == sf::Event::KeyPressed) {
-                if (event.key.code == Keyboard::D) {
-                    game->shoot(30, 0, 0);
+                if (event.key.code == Keyboard::Right) {
+                    game->shoot(40, 0, 11);
                 }
-                if (event.key.code == Keyboard::W) {
-                    game->shoot(30, pi / 2, 0);
+                if (event.key.code == Keyboard::Down) {
+                    game->shoot(40, pi / 2, 11);
                 }
-                if (event.key.code == Keyboard::A) {
-                    game->shoot(30, pi, 0);
+                if (event.key.code == Keyboard::Left) {
+                    game->shoot(40, pi, 11);
                 }
-                if (event.key.code == Keyboard::S) {
-                    game->shoot(30, 3 * pi / 2, 0);
+                if (event.key.code == Keyboard::Up) {
+                    game->shoot(40, 3 * pi / 2, 11);
                 }
                 if (event.key.code == Keyboard::M) {
-                    game->shoot(60, pi / 6, 0);
+                    game->shoot(60, pi / 6, 11);
                 }
             }
             if (event.type == sf::Event::MouseButtonPressed) {
