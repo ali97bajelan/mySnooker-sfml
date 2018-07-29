@@ -16,11 +16,12 @@ using namespace std;
 
 int main() {
     RenderWindow window;
-    Game *game;
-    window.create(VideoMode(1280, 680), "My Snooker");
+    window.create(VideoMode(1280, 680), "My SnokkkkkkkPoker");
 
     Rendering *render = new Rendering(&window);
-    game = new Game(1280, 680, render);
+    cout<<"fuck"<<endl;
+    Game *game = new Game(1280, 680, render);
+    cout<<"fuck"<<endl;
     //Resource *resource = new Resource(game);
     //window.setFramerateLimit(100);
     Event event;
@@ -33,20 +34,23 @@ int main() {
             if (event.type == Event::Closed)
                 window.close();
             if (event.type == sf::Event::KeyPressed) {
+                if (event.key.code == Keyboard::O) {
+                    game->shoot(40, teta, 0);
+                }
                 if (event.key.code == Keyboard::Right) {
-                    game->shoot(40, 0, 11);
+                    game->shoot(40, 0, 0);
                 }
                 if (event.key.code == Keyboard::Down) {
-                    game->shoot(40, pi / 2, 11);
+                    game->shoot(40, pi / 2, 0);
                 }
                 if (event.key.code == Keyboard::Left) {
-                    game->shoot(40, pi, 11);
+                    game->shoot(40, pi, 0);
                 }
                 if (event.key.code == Keyboard::Up) {
-                    game->shoot(40, 3 * pi / 2, 11);
+                    game->shoot(40, 3 * pi / 2, 0);
                 }
                 if (event.key.code == Keyboard::M) {
-                    game->shoot(60, pi / 6, 11);
+                    game->shoot(60, pi / 6, 0);
                 }
             }
             if (event.type == sf::Event::MouseButtonPressed) {

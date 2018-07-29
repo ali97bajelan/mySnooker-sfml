@@ -10,15 +10,21 @@
 
 class Game {
 public:
-    Game(int width,int height,Rendering *render);
-    void shoot(float speed,float degree,int index);
+    Game(int width, int height, Rendering *render);
+
+    void shoot(float speed, float degree, int index);
+
     void move();
+
     void check();
+
     Ball **get_balls();
+
     bool is_moving();
-    private:
-    int width,height;
+
+private:
     Ball **balls;
+    int width, height;
     Rendering *render;
 };
 

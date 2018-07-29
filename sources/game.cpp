@@ -31,7 +31,7 @@ Game::Game(int width, int height, Rendering *render) {
     balls[9] = new Ball(190, 345, 0, 0, 0, "red");
     balls[10] = new Ball(210, 335, 0, 0, 0, "red");
 
-    balls[11] = new Ball(630, 100, 0, 0, 0, "blue"); // 630-335
+    balls[11] = new Ball(630, 335, 0, 0, 0, "blue"); // 630-335
     balls[12] = new Ball(100, 335, 0, 0, 0, "black");
     balls[13] = new Ball(990, 220, 0, 0, 0, "yellow");
     balls[14] = new Ball(990, 420, 0, 0, 0, "green");
@@ -108,7 +108,7 @@ void Game::move() {
 
 void Game::check() {
     Ball *toop1, *toop2;
-    float x, y, a, b, delta_x, delta_y, teta, beta, Vx1, Vy1, Vx2, Vy2;
+    float x, y, a, b, delta_x, delta_y, delta_Vx, delta_Vy, teta, beta, Vx1, Vy1, Vx2, Vy2, cal1, cal2;
     for (int i = 0; i < 17; i++) {
         toop1 = get_balls()[i];
         x = toop1->get_x();
@@ -116,12 +116,38 @@ void Game::check() {
         Vx1 = toop1->get_Vx();
         Vy1 = toop1->get_Vy();
 
-
+        // goal middle Top
         if (x > 620 and x < 640 and y < 12) {
             cout << endl << "Goool" << endl;
             toop1->goal();
         }
+        // goal middle Bottom
+        if (x > 620 and x < 640 and y > 630) {
+            cout << endl << "Goool" << endl;
+            toop1->goal();
+        }
+        // goal Top Left
+        if (x < 30 and y <30) {
+            cout << endl << "Goool" << endl;
+            toop1->goal();
+        }
 
+        // goal Bottom Left
+        if (x < 35 and y >620) {
+            cout << endl << "Goool" << endl;
+            toop1->goal();
+        }
+        // goal Bottom Right
+        if (x > 1210 and y >620) {
+            cout << endl << "Goool" << endl;
+            toop1->goal();
+        }
+
+        // goal Top Right
+        if (x > 1210 and y <30) {
+            cout << endl << "Goool" << endl;
+            toop1->goal();
+        }
         if (x > 1220) {
             if (toop1->get_Vx() > 0) {
 
@@ -159,7 +185,9 @@ void Game::check() {
             Vy2 = toop2->get_Vy();
             delta_x = x - a;
             delta_y = y - b;
-            if (abs(delta_x) < 15 and abs(delta_y) < 15) {
+            delta_Vx = Vx1 - Vx2;
+            delta_Vy = Vy1 - Vy2;
+            if (abs(delta_x) < 22 and abs(delta_y) < 22) {
                 teta = atan(delta_y / delta_x);
                 if (Vx1 != 0)
                     beta = atan(Vy1 / Vx1);
@@ -167,16 +195,20 @@ void Game::check() {
                     beta = atan(Vy2 / Vx2);
                 else
                     beta = pi / 2;
+                //if ()
                 cout << endl << "\t\tZARBE" << endl << "teta = " << 180 * teta / pi << "\t\t beta = " << 180 * beta / pi
                      << endl;
                 // testing rules
                 cout << toop1->get_color() << "\t Vx = " << Vx1 << "\t Vy = " << Vy1 << endl;
                 cout << toop2->get_color() << "\t Vx = " << Vx2 << "\t Vy = " << Vy2 << endl;
 
-                toop1->set_Vx(Vx1 * sin((teta - beta) * pi / 180) + Vx2 * cos((teta - beta) * pi / 180));
-                toop1->set_Vy(Vy1 * sin((teta - beta) * pi / 180) + Vy2 * cos((teta - beta) * pi / 180));
-                toop2->set_Vx(Vx2 * sin((teta - beta) * pi / 180) + Vx1 * cos((teta - beta) * pi / 180));
-                toop2->set_Vy(Vy2 * sin((teta - beta) * pi / 180) + Vy1 * cos((teta - beta) * pi / 180));
+                cal1 = (delta_Vx * delta_x + delta_Vy * delta_y) / (delta_x * delta_x + delta_y * delta_y);
+                //cal2=-delta_Vx*-delta_x+(-delta_Vy*)
+                toop1->set_Vx(Vx1 - cal1 * delta_x);
+                toop1->set_Vy(Vy1 - cal1 * delta_y);
+                toop2->set_Vx(Vx2 + cal1 * delta_x);
+                toop2->set_Vy(Vy2 + cal1 * delta_y);
+                //toop2->set_Vy(Vy2 * sin((teta - beta) * pi / 180) + Vy1 * cos((teta - beta) * pi / 180));
 
                 cout << "\t\t After BARKHORD" << endl;
                 cout << toop1->get_color() << "\t Vx = " << toop1->get_Vx() << "\t Vy = " << toop1->get_Vy() << endl;
