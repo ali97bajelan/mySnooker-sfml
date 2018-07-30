@@ -12,7 +12,7 @@
 //#include "../main.cpp"
 //#include "../headers/renderer.h"
 
-Ball::Ball(float x, float y, float Vx, float Vy, float speed, std::string color) {
+Ball::Ball(float x, float y, float Vx, float Vy, int value, std::string color) {
     this->x = x;
     this->y = y;
     this->Vx = Vx;
@@ -20,12 +20,9 @@ Ball::Ball(float x, float y, float Vx, float Vy, float speed, std::string color)
     this->Ax = -3;
     this->Ay = -3;
     this->color = color;
-    this->speed = speed;
+    this->value = value;
 }
 
-void Ball::set_speed(float speed) {
-    this->speed = speed;
-}
 
 void Ball::set_x(float x) {
     this->x = x;
@@ -91,33 +88,14 @@ Ball *Ball::get_ball() {
     return this;
 }
 
+int Ball::get_value() {
+    return this->value;
+}
+
 std::string Ball::get_color() {
     return this->color;
 }
 
-void Ball::move() {
-    float delta_x = pow((this->Vx), 2) / this->Ax;
-    float delta_y = pow((this->Vy), 2) / this->Ay;
-    while (delta_x > 0 || delta_y > 0) {
-        if (delta_x > 0)
-            this->x += 0.5;
-        if (delta_y > 0)
-            this->y += 0.5;
-        delta_x -= 0.5;
-        delta_y -= 0.5;
-//        renderer(window,this);
-        //std::this_thread::sleep_for(std::chrono::milliseconds(10));
-
-    }
-    //if (this->x > 600 || this->x < 0)
-    //  this->set_Ax(-this->get_Ax());
-    //if (this->y > 400 || this->y < 0)
-    //  this->set_Ay(-this->get_Ay());
-    //this->x += pow((this->Vx), 2) / this->Ax;
-    //this->y += pow((this->Vy), 2) / this->Ay;
-
-
-}
 
 void Ball::goal() {
     this->x = -100;
